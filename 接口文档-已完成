@@ -1,0 +1,1106 @@
+
+1.获取用户列表
+地址：http://172.20.66.29:8080/user/getUsers
+	  入参：
+      {
+	  "companyId":"gzjxh",  公司id（必传）//公司ID
+	  "name":"456",        可为空//姓名
+	  "userId":""           可为空//用户ID
+	  }                
+	  
+出参：
+{
+    "message": "Ok！操作成功",
+    "code": 200,
+    "data": {
+        "users": [
+            {
+                "userId": "2",//用户ID
+                "name": "456",//姓名
+                "sex": "1",//性别
+                "phone": "1",//电话号码
+                "leaveDate": "2018-04-16T06:28:55.000+0000",//停用时间
+                "allowLoginFlag": "1",//0 不允许登录 1 允许登录
+                "deletedFlag": "1",//0 正常 1 已删除
+                "email": null,//邮箱
+                "position": "1",//岗位
+                "companyId": "gzjxh",//公司ID
+                "status": 0,//状态 0在职，1离职（停用）
+                "companies": null,
+                "permissions": [
+                    {
+                        "parentLabel": "销售管理",
+                        "childrenLabel": [//子权限
+                            {
+                                "id": "1",//公司ID
+                                "childrenLabel": "1",//子权限
+                                "resource": "/addUser",//来源
+                                "remark": "1",//意见
+                                "parentLabel": "销售管理"
+                            }
+                        ]
+                    },
+                    {
+                        "parentLabel": "用户管理",
+                        "childrenLabel": [//子权限
+                            {
+                                "id": "2",//公司ID
+                                "childrenLabel": "2",//子权限
+                                "resource": "/deletUser",//来源
+                                "remark": "1",//意见
+                                "parentLabel": "用户管理"
+                            }
+                        ]
+                    }
+                ],
+                "companyName": "广州锦星行",
+                "permissions1": null
+            }
+        ]
+    }
+}
+ 
+2.获取所有权限列表
+地址：http://172.20.66.29:8080/user/ getAllPermission
+	  入参：
+           空           
+	  
+出参：
+{
+    "message": "Ok！操作成功",
+    "code": 200,
+    "data": {
+        "permission": [
+            {
+                "parentLabel": "销售管理",
+                "childrenLabel": [//子权限
+                    {
+                        "id": "1",//公司ID
+                        "childrenLabel": "1",//子权限
+                        "resource": "/addUser",//来源
+                        "remark": "1",//意见
+                        "parentLabel": "销售管理"
+                    },
+                    {
+                        "id": "4",//公司ID
+                        "childrenLabel": "4",//子权限
+                        "resource": "/eee",//来源
+                        "remark": "1",//意见
+                        "parentLabel": "销售管理"
+                    }
+                ]
+            },
+            {
+                "parentLabel": "用户管理",
+                "childrenLabel": [//子权限
+                    {
+                        "id": "2",//公司ID
+                        "childrenLabel": "2",//子权限
+                        "resource": "/deletUser",//来源
+                        "remark": "1",//意见
+                        "parentLabel": "用户管理"
+                    },
+                    {
+                        "id": "3",//公司ID
+                        "childrenLabel": "3",//子权限
+                        "resource": "/ttttt",//来源
+                        "remark": "1",//意见
+                        "parentLabel": "用户管理"
+                    }
+                ]
+            },
+            {
+                "parentLabel": "统计管理",
+                "childrenLabel": [//子权限
+                    {
+                        "id": "5",//公司ID
+                        "childrenLabel": "5",//子权限
+                        "resource": "/eee",//来源
+                        "remark": "1",//意见
+                        "parentLabel": "统计管理"
+                    },
+                    {
+                        "id": "6",//公司ID
+                        "childrenLabel": "6",//子权限
+                        "resource": "/eee",//来源
+                        "remark": "1",//意见
+                        "parentLabel": "统计管理"
+                    }
+                ]
+            }
+        ]
+    }
+}
+
+3.新增用户
+地址：http://172.20.66.29:8080/user/addUser
+	  入参：
+           {
+	"newOrPartTimeUser":0,   0新增用户 1新增兼职人员
+	"userId":"888666",//用户ID
+	"name":"新增人员测试",//姓名
+	"sex":"0",//性别
+	"phone":"13554544",//电话号码
+	"pemission":"1,2,3",      权限传子id集合
+	"companyId":"szjl"//公司ID
+}          
+	  
+出参：
+  {
+    "message": "Ok！操作成功",
+    "code": 200,
+    "data": {
+}
+
+4.修改用户信息
+地址：http://172.20.66.29:8080/user/updateUser
+	  入参：
+{
+	"userId":"888666",//用户ID
+	"name":"修改人员测试",//姓名
+	"sex":"1",//性别
+	"phone":"111111",//电话号码
+	"permission":"1,2,3",
+	"companyId":"szjl"//公司ID
+}
+
+出参：
+  {
+    "message": "Ok！操作成功",
+    "code": 200,
+    "data": {
+}
+
+
+
+5.重置密码
+地址：http://172.20.66.29:8080/user/resetPwd
+	  入参：
+{
+	"userId":"888666"//用户ID
+}
+出参：
+  {
+    "message": "Ok！操作成功",
+    "code": 200,
+    "data": {
+}
+
+6.删除
+地址：http://172.20.66.29:8080/user/deleteUser
+	  入参：
+{
+	"userId":"888666",//用户ID
+	"companyId":"szjl"//公司ID
+}
+出参：
+  {
+    "message": "Ok！操作成功",
+    "code": 200,
+    "data": {
+}
+
+7. 离职
+地址：http://172.20.66.29:8080/user/quit
+	  入参：
+{
+	"userId":"888666"//用户ID
+}
+出参：
+  {
+    "message": "Ok！操作成功",
+    "code": 200,
+    "data": {
+}
+
+
+
+
+
+8. 获取公司列表
+地址：http://172.20.66.29:8080/user/getCompanies
+	  入参：
+               空
+出参：
+{
+    "message": "Ok！操作成功",
+    "code": 200,
+    "data": {
+        "companies": [
+            {
+                "id": "dgjz",//公司ID
+                "name": "东莞锦众",//姓名
+                "shortName": "东莞锦众",//公司简称
+                "shortname2letters": "DA",//公司简称（二位字母）
+                "cityCode": "01^06",//市县代码
+                "areaName": "深圳",//区域简称
+                "adress": "深圳市南山区蛇口港湾大道26号",//地址
+                "mail": "800",//邮编
+                "phone": "075526808912",//电话号码
+                "fax": "xx",//传真
+                "brandName": "一汽奥迪",//本店主营品牌ID
+                "brandCode": "Audi",//本店主营品牌代码
+                "taxRate": 10,//发票税率
+                "cityPhoneCode": "0755",//区号
+                "preorderCode": "YD",//车辆订单号代码
+                "jzCode": "JZ",//加装单代码
+                "bxCode": "BX",//投保单代码
+                "skCode": "SK",//收款通知书代码
+                "areaCode": "01",//区域编码
+                "idDesc": null,//公司ID说明
+                "nameDesc": null,//公司全称说明
+                "shortNameDesc": null,//公司简称说明
+                "shortname2lettersDesc": null,//公司简称（二位字母）说明
+                "cityCodeDesc": null,//市县代码说明
+                "areaCodeDesc": null,//区域编码说明
+                "areaNameDesc": null,//区域简称说明
+                "adressDesc": null,//地址说明
+                "mailDesc": null,//邮编说明
+                "phoneDesc": null,//电话说明
+                "faxDesc": null,//传真说明
+                "brandNameDesc": null,//本店主营品牌ID说明
+                "brandCodeDesc": null,//本店主营品牌代码说明
+                "taxRateDesc": null,//发票税率说明
+                "cityPhoneCodeDesc": null,//区号说明
+                "preorderCodeDesc": null,//车辆订单号代码说明
+                "jzCodeDesc": null,//加装单代码说明
+                "bxCodeDesc": null,//投保单代码说明
+                "skCodeDesc": null,//收款通知书代码说明
+                "permissions": null
+            },
+				…
+        ]
+    }
+}
+
+
+整车销售退单
+1.	获取整车退单列表或未退单列表
+     地址：http://172.20.66.29:8080/ vehiclesSaleRefund/ getRefundList
+	  入参：
+               {
+	"preOrderOrContract":1,    0查询预订单1查询合同(必填)
+	"currentPage":0,            (必填)
+	"pageSize":10,              (必填)
+	"isRefund":0,              0查询退单列表 1查询未退单列表(必填)
+"cusName":               客户名称//客户名称
+"refundApplyDateBegin"     退单起始时间
+"refundApplyDateEnd"       退单结束时间
+"salesmanName"            销售顾问
+"refundStatus"              退单状态
+"chassisNumber"            底盘号
+   
+}
+出参：
+PreOrderOrContract传1时
+{
+    "message": "Ok！操作成功",
+    "code": 200,
+    "data": {
+        "refundList": {
+            "pageNum": 0,
+            "pageSize": 10,
+            "size": 2,
+            "startRow": 1,
+            "endRow": 2,
+            "total": 2,
+            "pages": 1,
+            "list": [
+                {
+                    "id": "2",//公司ID
+                    "contractNumber": "DGJZ-YD-2018-5-17-0001",//合同号（订单号与合同号相同）
+                    "salesmanName": "1",//销售顾问名称
+                    "createTime": "2018-06-07T06:02:16.000+0000",//创建时间
+                    "creator": "2",//创建人姓名
+                    "getCarDate": "2018-05-31T06:02:00.000+0000",//提车时间
+                    "companyId": "2",//公司ID
+                    "salesadminCheckFlag": true,//销售经理复核标志，默认为0
+                    "salesadminCheckRemark": "我在这里做一个测试",//销售经理复核意见
+                    "salesadminName": "abc",//销售经理名称
+                    "salesadminCheckDate": "2018-06-06T06:26:13.790+0000",//销售经理复核时间
+                    "settleFlag": true,//订单结算标志，默认为0
+                    "settleRemark": "1",//结算意见
+                    "settleTime": "2018-05-31T06:02:42.000+0000",//合同结算时间
+                    "settleMan": null,//合同结算人名称
+                    "carOutFlag": false,//出库标识，默认为0
+                    "carOutMan": null,//出库人
+                    "carOutTime": null,//出库时间
+                    "operatorName": null,//操作人姓名
+                    "lastSubmitTime": null,//最后提交时间（填单日期）
+                    "status": 2,//状态 0在职，1离职（停用）
+                    "cusId": "2",//客户编码
+                    "cusName": "2",//客户名称
+                    "identifyType": "2",//证件类型
+                    "identifyId": "2",//证件号码
+                    "mobilephone": "2",//联系人移动电话
+                    "cusType": "2",//客户类别
+                    "invoiceCusName": "22",//发票客户名称
+                    "carDemioName": "2",//（厂牌）车系
+                    "carModelName": "2",//车型
+                    "configure": "2",//配置
+                    "inColor": "2",//内饰颜色
+                    "outColor": "2",//车身颜色
+                    "intentionLevel": "2",//意向级别
+                    "buywayFirst": null,//购车方式-初次购车，默认为0
+                    "buywayLoyal": null,//购车方式-忠诚客户，默认为0
+                    "buywayDisplace": null,//购车方式-置换，默认为0
+                    "buywayBigCus": null,//购车方式-大客户，默认为0
+                    "originPlace": null,//产地描述
+                    "secondCarDescrip": null,//置换二手车说明
+                    "secondCarPrice": null,//置换价格
+                    "secondCarRemark": null,//二手车备注
+                    "buyAccount": null,//预购台数
+                    "priorityLevel": null,//订单优先级 1 一级 2 二级
+                    "discountPrice": null,//优惠（税后）
+                    "actualIncome": null,//实际收入
+                    "payWay": null,//付款方式
+                    "payRestMoneyDay": null,//付清余款日
+                    "expectedArrivalTime": null,//预计到车时间
+                    "preGetCarDate": null,//预计提车时间
+                    "saleType": null,//销售类型 1 车辆零售 2 车辆批发 3 大客户,默认为1
+                    "addedRemark1": null,//补充条款一
+                    "addedRemark2": null,//补充条款二
+                    "addedRemark3": null,//补充条款三
+                    "remark": null,//意见
+                    "inventoryNumber": null,//库存号
+                    "chassisNumber": "1234",//车架号
+                    "engineNumber": null,//发动机号
+                    "expectInDate": null,//预计到店时间
+                    "matchedCarDemioName": null,//配车车系
+                    "matchedCarModelName": null,//配车车型
+                    "matchedConfigure": null,//配车配置
+                    "matchedInColor": null,//配车内饰颜色
+                    "matchedOutColor": null,//配车车身颜色
+                    "matchedCarStatus": null,//配车车辆状态
+                    "matchedCarTime": null,//配车配车时间
+                    "matchedComefromCompanyId": null,//配车车辆来源公司
+                    "matchedGuidePrice": null,//配车市场指导价
+                    "dividedCarPrice": null,//分期项目-净车身价
+                    "dividedLoanAmount": null,//分期项目-贷款额
+                    "dividedFirstPay": null,//分期项目-首付车款
+                    "dividedFirstPayRatio": null,//分期项目-首付车款比例
+                    "dividedCompanyName": null,//分期公司名称
+                    "dividedGlassInsurance": null,//分期项目-玻璃险
+                    "dividedCusMortgage": null,//分期项目-直客按揭
+                    "dividedSecuredMortgage": null,//分期项目-担保按揭
+                    "dividedPayMonthAmount": null,//分期项目-月还款额
+                    "dividedPayYears": null,//分期项目-贷款年限
+                    "dividedSecuredCompanyName": null,//分期项目-担保公司名称
+                    "insuranceCollectedAmount": null,//保险收款金额
+                    "extendedWarrantyAmount": null,//延保金额
+                    "purchaseTax": null,//购置税
+                    "licensePlateAmount": null,//验车上牌
+                    "discountAmount": null,//贴息金额
+                    "venderDiscountAmount": null,//厂家贴息金额
+                    "renewalDeposit": null,//续保押金
+                    "jzAmount": null,//精品费
+                    "totalAmount": 500,//订单合计金额
+                    "presentJzAmount": null,//赠送-精品券
+                    "presentOtherAmount": null,//赠送-公司承担其他费用
+                    "presentMaintainAmount": null,//赠送-保养券
+                    "invoiceCompanyName": null,//开票公司
+                    "insuranceAdjust": null,//保险调整额
+                    "refundFlag": false,//退单标识 0 没有退单 1 退单 ，默认为0
+                    "refundStatus": null,//退单状态 1待审核 2审核通过 3 审核不通过 4 取消配车 5 结算 ，默认为NULL
+                    "refundApplyRemark": null,//退单申请备注
+                    "refundApplyDate": null,//退单申请日期
+                    "refundApplayMan": null,//退单申请人
+                    "refundReason": null,//退单原因
+                    "refundCheckFlag": null,//退单审核结果 0 不通过 1 通过，默认为0
+                    "refundCheckRemark": null,//退单审核意见
+                    "refundCheckMan": null,//退单审核人
+                    "refundCheckDate": null,//退单审核日期
+                    "refundCarFlag": null,//退订车标志，默认为0
+                    "refundCarRemark": null,//退订车意见
+                    "refundCarName": null,//退订车人名称
+                    "refundCarDate": null,//退订车时间
+                    "refundSettleFlag": false,//退单结算标识 0 未结算 1 已结算 默认为0
+                    "refundSettleRemark": null,//退单结算意见
+                    "refundSettleMan": null,//退单结算人
+                    "refundSettleDate": null,//退单结算日期
+                    "licensePlateProperty": null,//牌照属性
+                    "licensePlateGetway": null,//上牌方式
+                    "salePrice": null,//车辆成交价格
+                    "prepaidAmount": null,//预付金额
+                    "invoicePrice": null,//开票金额
+                    "collectedMoney": 233,
+                    "arrears": 267,
+                    "stockInfoDetail": null
+                },
+                …
+            ],
+            "prePage": 0,
+            "nextPage": 1,
+            "isFirstPage": false,
+            "isLastPage": false,
+            "hasPreviousPage": false,
+            "hasNextPage": true,
+            "navigatePages": 8,
+            "navigatepageNums": [
+                1
+            ],
+            "navigateFirstPage": 1,
+            "navigateLastPage": 1,
+            "firstPage": 1,
+            "lastPage": 1
+        }
+    }
+}
+
+PreOrderOrContract传0时
+{
+    "message": "Ok！操作成功",
+    "code": 200,
+    "data": {
+        "refundList": {
+            "pageNum": 0,
+            "pageSize": 10,
+            "size": 2,
+            "startRow": 1,
+            "endRow": 2,
+            "total": 2,
+            "pages": 1,
+            "list": [
+                {
+                    "id": "1526528352749",//公司ID
+                    "preorderNumber": "DGJZ-YD-2018-5-17-0001",//订单号
+                    "cusId": "3",//客户编码
+                    "cusName": "退单编辑测试",//客户名称
+                    "identifyType": "4",//证件类型
+                    "identifyId": "5",//证件号码
+                    "mobilephone": "6",//联系人移动电话
+                    "cusType": "7",//客户类别
+                    "invoiceCusName": "8",//发票客户名称
+                    "carDemioName": "9",//（厂牌）车系
+                    "carModelName": "10",//车型
+                    "configure": "11",//配置
+                    "inColor": "12",//内饰颜色
+                    "outColor": "13",//车身颜色
+                    "intentionLevel": "14",//意向级别
+                    "buywayFirst": false,//购车方式-初次购车，默认为0
+                    "buywayLoyal": false,//购车方式-忠诚客户，默认为0
+                    "buywayDisplace": false,//购车方式-置换，默认为0
+                    "buywayBigCus": false,//购车方式-大客户，默认为0
+                    "originPlace": "0",//产地描述
+                    "secondCarDescrip": "0",//置换二手车说明
+                    "secondCarPrice": 0,//置换价格
+                    "secondCarRemark": "0",//二手车备注
+                    "buyAccount": null,//预购台数
+                    "priorityLevel": null,//订单优先级 1 一级 2 二级
+                    "licensePlateProperty": null,//牌照属性
+                    "licensePlateGetway": null,//上牌方式
+                    "salePrice": null,//车辆成交价格
+                    "prepaidAmount": null,//预付金额
+                    "invoicePrice": null,//开票金额
+                    "payWay": null,//付款方式
+                    "payRestMoneyDay": null,//付清余款日
+                    "expectedArrivalTime": null,//预计到车时间
+                    "getCarDate": null,//提车时间
+                    "addedInsurance": null,//增加项-保险，默认为0
+                    "addedJz": null,//增加项-精品，默认为0
+                    "saleType": null,//销售类型 1 车辆零售 2 车辆批发 3 大客户,默认为1
+                    "addedRemark1": null,//补充条款一
+                    "addedRemark2": null,//补充条款二
+                    "addedRemark3": null,//补充条款三
+                    "remark": null,//意见
+                    "dividedNetPrice": null,//分期项目-净车身价
+                    "dividedLoanAmount": null,//分期项目-贷款额
+                    "dividedFirstPay": null,//分期项目-首付车款
+                    "dividedCompanyName": null,//分期公司名称
+                    "dividedGlassInsurance": null,//分期项目-玻璃险
+                    "dividedCusMortgage": null,//分期项目-直客按揭
+                    "dividedSecuredMortgage": null,//分期项目-担保按揭
+                    "dividedSecuredCompanyName": null,//分期项目-担保公司名称
+                    "insuranceCollectedAmount": null,//保险收款金额
+                    "extendedWarrantyAmount": null,//延保金额
+                    "purchaseTax": null,//购置税
+                    "licensePlateAmount": null,//验车上牌
+                    "discountAmount": null,//贴息金额
+                    "renewalDeposit": null,//续保押金
+                    "jzAmount": null,//精品费
+                    "totalAmount": 0,//订单合计金额
+                    "salesmanName": "0",//销售顾问名称
+                    "companyId": "0",//公司ID
+                    "status": 2,//状态 0在职，1离职（停用）
+                    "createTime": null,//创建时间
+                    "creator": null,//创建人姓名
+                    "operatorName": null,//操作人姓名
+                    "lastSubmitTime": null,//最后提交时间（填单日期）
+                    "salesadminCheckFlag": false,//销售经理复核标志，默认为0
+                    "salesadminCheckRemark": null,//销售经理复核意见
+                    "salesadminName": null,//销售经理名称
+                    "salesadminCheckDate": null,//销售经理复核时间
+                    "settleFlag": true,//订单结算标志，默认为0
+                    "settleRemark": null,//结算意见
+                    "settlerName": null,//结算人名称
+                    "settleDate": null,//结算时间
+                    "assignCarFlag": null,//配车标识，默认为0
+                    "assignCarRemark": null,//配车备注
+                    "assignCarMan": null,//配车员姓名
+                    "assignCarDate": "2018-05-31T06:31:49.000+0000",//配车日期
+                    "inventoryNumber": "1234",//库存号
+                    "chassisNumber": null,//车架号
+                    "carDemioCode": null,//（厂牌）车系代码
+                    "carModelCode": null,//车型代码
+                    "productCode": null,//产品代码
+                    "productName": null,//产品名称
+                    "refundFlag": false,//退单标识 0 没有退单 1 退单 ，默认为0
+                    "refundStatus": null,//退单状态 1待审核 2审核通过 3 审核不通过 4 取消配车 5 结算 ，默认为NULL
+                    "refundApplyRemark": null,//退单申请备注
+                    "refundApplyDate": null,//退单申请日期
+                    "refundApplyMan": null,//退单申请人
+                    "refundReason": null,//退单原因
+                    "refundCheckFlag": null,//退单审核结果 0 不通过 1 通过，默认为0
+                    "refundCheckRemark": null,//退单审核意见
+                    "refundCheckMan": null,//退单审核人
+                    "refundCheckDate": null,//退单审核日期
+                    "refundCarFlag": null,//退订车标志，默认为0
+                    "refundCarRemark": null,//退订车意见
+                    "refundCarName": null,//退订车人名称
+                    "refundCarDate": null,//退订车时间
+                    "refundSettleFlag": null,//退单结算标识 0 未结算 1 已结算 默认为0
+                    "refundSettleRemark": null,//退单结算意见
+                    "refundSettleMan": null,//退单结算人
+                    "refundSettleDate": null,//退单结算日期
+                    "collectedMoney": 233,
+                    "arrears": -233,
+                    "venderDiscountAmount": null,//厂家贴息金额
+                    "stockInfoDetail": {
+                        "vinventoryNumber": null,//车辆库存号
+                        "cckdm": null,//仓库代码
+                        "companyId": null,//公司ID
+                        "cgysdm": null,//供应商代码
+                        "ccx": "1",//车系
+                        "ccxdm": "1",//车型代码
+                        "ccxmc": "1",//车型名称
+                        "ccpdm": "1",//产品代码
+                        "ccppz": "1",//产品配置
+                        "cnsys": "1",//内饰颜色
+                        "cysdm": "1",//颜色代码
+                        "ncbdj": null,//成本单价
+                        "nzdsj": null,//指导售价
+                        "cdph": "1",//底盘号
+                        "cfdjh": null,//发动机号
+                        "chgzh": null,//合格证号
+                        "dlrrq": null,//录入(入库)日期
+                        "cczydm": null,//销售员代码
+                        "cbz": null,//备注
+                        "cclpzms": null,//车辆配置描述
+                        "ccd": null,//产地
+                        "dscrq": null,//生产日期
+                        "dfhrq": null,//发货日期
+                        "dyjddsj": null,//预计到店时间
+                        "cdchjz": null,//到车后加装
+                        "ckcbz": null,//库存备注
+                        "ctmqk": null,//贴膜情况
+                        "ckcqtbz": null,//库存其它备注
+                        "bsd": null,//是否锁定
+                        "csdrgh": null,//锁定人工号
+                        "dsdsj": null,//锁定时间
+                        "bpcbs": null,//配车标识
+                        "cpcczy": null,//配车操作员
+                        "dpcsj": null,//配车时间
+                        "chtzlj": null,//合同资料夹
+                        "cdycpdi": null,//第一次PDI
+                        "cdecpdi": null,//第二次PDI
+                        "czhxgczy": null,//最后修改操作员
+                        "dzhxgsj": null,//最后修改日期
+                        "nclzt": null,//车辆状态,默认为1
+                        "npccs": null,//配车次数，默认为0
+                        "ccpmc": null,//产品名称
+                        "companyName": null
+                    }
+                },
+               …
+            ],
+            "prePage": 0,
+            "nextPage": 1,
+            "isFirstPage": false,
+            "isLastPage": false,
+            "hasPreviousPage": false,
+            "hasNextPage": true,
+            "navigatePages": 8,
+            "navigatepageNums": [
+                1
+            ],
+            "navigateFirstPage": 1,
+            "navigateLastPage": 1,
+            "firstPage": 1,
+            "lastPage": 1
+        }
+    }
+}
+
+2.	查询退单详细信息 订单信息+备件单+收款信息
+  地址：http://172.20.66.29:8080/ vehiclesSaleRefund/ getRefundDetail
+	  入参：
+      
+	{
+	"preOrderOrContract":1,                     0查询预订单 1查询合同
+	"orderNumber":"DGJZ-YD-2018-5-17-0001"      订单号
+}   
+
+出参：
+preOrderOrContract传1时
+sks：收款信息
+jzbills:加装单信息
+order:订单信息
+{
+    "message": "Ok！操作成功",
+    "code": 200,
+    "data": {
+        "refundDetail": {
+            "sks": [
+                {
+                    "id": 2,//公司ID
+                    "preorderNumber": "DGJZ-YD-2018-5-17-0001",//订单号
+                    "collectedAmount": 200,//收款金额
+                    "payWay": null,//付款方式
+                    "type": null,//联系人类型
+                    "bankInfo": null,//银行信息
+                    "payBillNumber": null,//收款单号
+                    "payMan": null,//代付款人
+                    "remark": null,//意见
+                    "payDate": null,//收款日期
+                    "settleManId": null,//收款人ID
+                    "takeBackFlag": null,//收款单收回标志，默认为0
+                    "checkFlag": null,//确认标识(结算标识) ，默认为0
+                    "status": null//状态 0在职，1离职（停用）
+                },
+                {
+                    "id": 3,//公司ID
+                    "preorderNumber": "DGJZ-YD-2018-5-17-0001",//订单号
+                    "collectedAmount": 11,//收款金额
+                    "payWay": null,//付款方式
+                    "type": null,//联系人类型
+                    "bankInfo": null,//银行信息
+                    "payBillNumber": null,//收款单号
+                    "payMan": null,//代付款人
+                    "remark": null,//意见
+                    "payDate": null,//收款日期
+                    "settleManId": null,//收款人ID
+                    "takeBackFlag": null,//收款单收回标志，默认为0
+                    "checkFlag": null,//确认标识(结算标识) ，默认为0
+                    "status": null//状态 0在职，1离职（停用）
+                },
+                {
+                    "id": 4,//公司ID
+                    "preorderNumber": "DGJZ-YD-2018-5-17-0001",//订单号
+                    "collectedAmount": 11,//收款金额
+                    "payWay": null,//付款方式
+                    "type": null,//联系人类型
+                    "bankInfo": null,//银行信息
+                    "payBillNumber": null,//收款单号
+                    "payMan": null,//代付款人
+                    "remark": null,//意见
+                    "payDate": null,//收款日期
+                    "settleManId": null,//收款人ID
+                    "takeBackFlag": null,//收款单收回标志，默认为0
+                    "checkFlag": null,//确认标识(结算标识) ，默认为0
+                    "status": null//状态 0在职，1离职（停用）
+                },
+                {
+                    "id": 5,//公司ID
+                    "preorderNumber": "DGJZ-YD-2018-5-17-0001",//订单号
+                    "collectedAmount": 11,//收款金额
+                    "payWay": null,//付款方式
+                    "type": null,//联系人类型
+                    "bankInfo": null,//银行信息
+                    "payBillNumber": null,//收款单号
+                    "payMan": null,//代付款人
+                    "remark": null,//意见
+                    "payDate": null,//收款日期
+                    "settleManId": null,//收款人ID
+                    "takeBackFlag": null,//收款单收回标志，默认为0
+                    "checkFlag": null,//确认标识(结算标识) ，默认为0
+                    "status": null//状态 0在职，1离职（停用）
+                }
+            ],
+            "jzBills": {
+                "jzBillItems": [
+                    {
+                        "billNumber": "DGJZ-YD-2018-5-17-0001",//加装单号
+                        "jzNumber": "22",//备件编号
+                        "jzName": "Q7电动脚踏板",//备件名称
+                        "salesNumber": 1,//销售数量
+                        "unit": "件",//计量单位
+                        "costPrice": 1.33,//成本单价
+                        "taxBuyPrice": null,//含税采购单价
+                        "outInventoryPrice": 1.33,//出库价
+                        "accountingPrice": 1.33,//核算价
+                        "amountReceivable": 1.63,//应收金额
+                        "amountCollected": 1.56//实收金额
+                    },
+                    {
+                        "billNumber": "DGJZ-YD-2018-5-17-0001",//加装单号
+                        "jzNumber": "72",//备件编号
+                        "jzName": "Q5 原厂后视镜电动折叠",//备件名称
+                        "salesNumber": 1,//销售数量
+                        "unit": "套",//计量单位
+                        "costPrice": 1.33,//成本单价
+                        "taxBuyPrice": null,//含税采购单价
+                        "outInventoryPrice": 1.33,//出库价
+                        "accountingPrice": 1.33,//核算价
+                        "amountReceivable": 1.63,//应收金额
+                        "amountCollected": 1.56//实收金额
+                    }
+                ],
+                "totalAmountCollected": 3.12,
+                "totalAmountReceivable": 3.26,
+                "totalCount": 2
+            },
+            "order": {
+                "id": "2",//公司ID
+                "contractNumber": "DGJZ-YD-2018-5-17-0001",//合同号（订单号与合同号相同）
+                "salesmanName": "1",//销售顾问名称
+                "createTime": "2018-06-07T06:02:16.000+0000",//创建时间
+                "creator": "2",//创建人姓名
+                "getCarDate": "2018-05-31T06:02:00.000+0000",//提车时间
+                "companyId": "2",//公司ID
+                "salesadminCheckFlag": true,//销售经理复核标志，默认为0
+                "salesadminCheckRemark": "我在这里做一个测试",//销售经理复核意见
+                "salesadminName": "abc",//销售经理名称
+                "salesadminCheckDate": "2018-06-06T06:26:13.790+0000",//销售经理复核时间
+                "settleFlag": true,//订单结算标志，默认为0
+                "settleRemark": "1",//结算意见
+                "settleTime": "2018-05-31T06:02:42.000+0000",//合同结算时间
+                "settleMan": null,//合同结算人名称
+                "carOutFlag": false,//出库标识，默认为0
+                "carOutMan": null,//出库人
+                "carOutTime": null,//出库时间
+                "operatorName": null,//操作人姓名
+                "lastSubmitTime": null,//最后提交时间（填单日期）
+                "status": 2,//状态 0在职，1离职（停用）
+                "cusId": "2",//客户编码
+                "cusName": "2",//客户名称
+                "identifyType": "2",//证件类型
+                "identifyId": "2",//证件号码
+                "mobilephone": "2",//联系人移动电话
+                "cusType": "2",//客户类别
+                "invoiceCusName": "22",//发票客户名称
+                "carDemioName": "2",//（厂牌）车系
+                "carModelName": "2",//车型
+                "configure": "2",//配置
+                "inColor": "2",//内饰颜色
+                "outColor": "2",//车身颜色
+                "intentionLevel": "2",//意向级别
+                "buywayFirst": null,//购车方式-初次购车，默认为0
+                "buywayLoyal": null,//购车方式-忠诚客户，默认为0
+                "buywayDisplace": null,//购车方式-置换，默认为0
+                "buywayBigCus": null,//购车方式-大客户，默认为0
+                "originPlace": null,//产地描述
+                "secondCarDescrip": null,//置换二手车说明
+                "secondCarPrice": null,//置换价格
+                "secondCarRemark": null,//二手车备注
+                "buyAccount": null,//预购台数
+                "priorityLevel": null,//订单优先级 1 一级 2 二级
+                "discountPrice": null,//优惠（税后）
+                "actualIncome": null,//实际收入
+                "payWay": null,//付款方式
+                "payRestMoneyDay": null,//付清余款日
+                "expectedArrivalTime": null,//预计到车时间
+                "preGetCarDate": null,//预计提车时间
+                "saleType": null,//销售类型 1 车辆零售 2 车辆批发 3 大客户,默认为1
+                "addedRemark1": null,//补充条款一
+                "addedRemark2": null,//补充条款二
+                "addedRemark3": null,//补充条款三
+                "remark": null,//意见
+                "inventoryNumber": null,//库存号
+                "chassisNumber": "1234",//车架号
+                "engineNumber": null,//发动机号
+                "expectInDate": null,//预计到店时间
+                "matchedCarDemioName": null,//配车车系
+                "matchedCarModelName": null,//配车车型
+                "matchedConfigure": null,//配车配置
+                "matchedInColor": null,//配车内饰颜色
+                "matchedOutColor": null,//配车车身颜色
+                "matchedCarStatus": null,//配车车辆状态
+                "matchedCarTime": null,//配车配车时间
+                "matchedComefromCompanyId": null,//配车车辆来源公司
+                "matchedGuidePrice": null,//配车市场指导价
+                "dividedCarPrice": null,//分期项目-净车身价
+                "dividedLoanAmount": null,//分期项目-贷款额
+                "dividedFirstPay": null,//分期项目-首付车款
+                "dividedFirstPayRatio": null,//分期项目-首付车款比例
+                "dividedCompanyName": null,//分期公司名称
+                "dividedGlassInsurance": null,//分期项目-玻璃险
+                "dividedCusMortgage": null,//分期项目-直客按揭
+                "dividedSecuredMortgage": null,//分期项目-担保按揭
+                "dividedPayMonthAmount": null,//分期项目-月还款额
+                "dividedPayYears": null,//分期项目-贷款年限
+                "dividedSecuredCompanyName": null,//分期项目-担保公司名称
+                "insuranceCollectedAmount": null,//保险收款金额
+                "extendedWarrantyAmount": null,//延保金额
+                "purchaseTax": null,//购置税
+                "licensePlateAmount": null,//验车上牌
+                "discountAmount": null,//贴息金额
+                "venderDiscountAmount": null,//厂家贴息金额
+                "renewalDeposit": null,//续保押金
+                "jzAmount": null,//精品费
+                "totalAmount": 500,//订单合计金额
+                "presentJzAmount": null,//赠送-精品券
+                "presentOtherAmount": null,//赠送-公司承担其他费用
+                "presentMaintainAmount": null,//赠送-保养券
+                "invoiceCompanyName": null,//开票公司
+                "insuranceAdjust": null,//保险调整额
+                "refundFlag": false,//退单标识 0 没有退单 1 退单 ，默认为0
+                "refundStatus": null,//退单状态 1待审核 2审核通过 3 审核不通过 4 取消配车 5 结算 ，默认为NULL
+                "refundApplyRemark": null,//退单申请备注
+                "refundApplyDate": null,//退单申请日期
+                "refundApplayMan": null,//退单申请人
+                "refundReason": null,//退单原因
+                "refundCheckFlag": null,//退单审核结果 0 不通过 1 通过，默认为0
+                "refundCheckRemark": null,//退单审核意见
+                "refundCheckMan": null,//退单审核人
+                "refundCheckDate": null,//退单审核日期
+                "refundCarFlag": null,//退订车标志，默认为0
+                "refundCarRemark": null,//退订车意见
+                "refundCarName": null,//退订车人名称
+                "refundCarDate": null,//退订车时间
+                "refundSettleFlag": false,//退单结算标识 0 未结算 1 已结算 默认为0
+                "refundSettleRemark": null,//退单结算意见
+                "refundSettleMan": null,//退单结算人
+                "refundSettleDate": null,//退单结算日期
+                "licensePlateProperty": null,//牌照属性
+                "licensePlateGetway": null,//上牌方式
+                "salePrice": null,//车辆成交价格
+                "prepaidAmount": null,//预付金额
+                "invoicePrice": null,//开票金额
+                "collectedMoney": null,
+                "arrears": null
+            }
+        }
+    }
+}
+
+preOrderOrContract传0时
+{
+    "message": "Ok！操作成功",
+    "code": 200,
+    "data": {
+        "refundDetail": {
+            "sks": [
+                {
+                    "id": 2,//公司ID
+                    "preorderNumber": "DGJZ-YD-2018-5-17-0001",//订单号
+                    "collectedAmount": 200,//收款金额
+                    "payWay": null,//付款方式
+                    "type": null,//联系人类型
+                    "bankInfo": null,//银行信息
+                    "payBillNumber": null,//收款单号
+                    "payMan": null,//代付款人
+                    "remark": null,//意见
+                    "payDate": null,//收款日期
+                    "settleManId": null,//收款人ID
+                    "takeBackFlag": null,//收款单收回标志，默认为0
+                    "checkFlag": null,//确认标识(结算标识) ，默认为0
+                    "status": null//状态 0在职，1离职（停用）
+                },
+                {
+                    "id": 3,//公司ID
+                    "preorderNumber": "DGJZ-YD-2018-5-17-0001",//订单号
+                    "collectedAmount": 11,//收款金额
+                    "payWay": null,//付款方式
+                    "type": null,//联系人类型
+                    "bankInfo": null,//银行信息
+                    "payBillNumber": null,//收款单号
+                    "payMan": null,//代付款人
+                    "remark": null,//意见
+                    "payDate": null,//收款日期
+                    "settleManId": null,//收款人ID
+                    "takeBackFlag": null,//收款单收回标志，默认为0
+                    "checkFlag": null,//确认标识(结算标识) ，默认为0
+                    "status": null//状态 0在职，1离职（停用）
+                },
+                {
+                    "id": 4,//公司ID
+                    "preorderNumber": "DGJZ-YD-2018-5-17-0001",//订单号
+                    "collectedAmount": 11,//收款金额
+                    "payWay": null,//付款方式
+                    "type": null,//联系人类型
+                    "bankInfo": null,//银行信息
+                    "payBillNumber": null,//收款单号
+                    "payMan": null,//代付款人
+                    "remark": null,//意见
+                    "payDate": null,//收款日期
+                    "settleManId": null,//收款人ID
+                    "takeBackFlag": null,//收款单收回标志，默认为0
+                    "checkFlag": null,//确认标识(结算标识) ，默认为0
+                    "status": null//状态 0在职，1离职（停用）
+                },
+                {
+                    "id": 5,//公司ID
+                    "preorderNumber": "DGJZ-YD-2018-5-17-0001",//订单号
+                    "collectedAmount": 11,//收款金额
+                    "payWay": null,//付款方式
+                    "type": null,//联系人类型
+                    "bankInfo": null,//银行信息
+                    "payBillNumber": null,//收款单号
+                    "payMan": null,//代付款人
+                    "remark": null,//意见
+                    "payDate": null,//收款日期
+                    "settleManId": null,//收款人ID
+                    "takeBackFlag": null,//收款单收回标志，默认为0
+                    "checkFlag": null,//确认标识(结算标识) ，默认为0
+                    "status": null//状态 0在职，1离职（停用）
+                }
+            ],
+            "jzBills": {
+                "jzBillItems": [
+                    {
+                        "billNumber": "DGJZ-YD-2018-5-17-0001",//加装单号
+                        "jzNumber": "22",//备件编号
+                        "jzName": "Q7电动脚踏板",//备件名称
+                        "salesNumber": 1,//销售数量
+                        "unit": "件",//计量单位
+                        "costPrice": 1.33,//成本单价
+                        "taxBuyPrice": null,//含税采购单价
+                        "outInventoryPrice": 1.33,//出库价
+                        "accountingPrice": 1.33,//核算价
+                        "amountReceivable": 1.63,//应收金额
+                        "amountCollected": 1.56//实收金额
+                    },
+                    {
+                        "billNumber": "DGJZ-YD-2018-5-17-0001",//加装单号
+                        "jzNumber": "72",//备件编号
+                        "jzName": "Q5 原厂后视镜电动折叠",//备件名称
+                        "salesNumber": 1,//销售数量
+                        "unit": "套",//计量单位
+                        "costPrice": 1.33,//成本单价
+                        "taxBuyPrice": null,//含税采购单价
+                        "outInventoryPrice": 1.33,//出库价
+                        "accountingPrice": 1.33,//核算价
+                        "amountReceivable": 1.63,//应收金额
+                        "amountCollected": 1.56//实收金额
+                    }
+                ],
+                "totalAmountCollected": 3.12,        合计实收金额
+                "totalAmountReceivable": 3.26,		合计应收金额
+                "totalCount": 2                    总数量
+            },
+            "order": {
+                "id": "1526528352749",//公司ID
+                "preorderNumber": "DGJZ-YD-2018-5-17-0001",//订单号
+                "cusId": "3",//客户编码
+                "cusName": "退单编辑测试",//客户名称
+                "identifyType": "4",//证件类型
+                "identifyId": "5",//证件号码
+                "mobilephone": "6",//联系人移动电话
+                "cusType": "7",//客户类别
+                "invoiceCusName": "8",//发票客户名称
+                "carDemioName": "9",//（厂牌）车系
+                "carModelName": "10",//车型
+                "configure": "11",//配置
+                "inColor": "12",//内饰颜色
+                "outColor": "13",//车身颜色
+                "intentionLevel": "14",//意向级别
+                "buywayFirst": false,//购车方式-初次购车，默认为0
+                "buywayLoyal": false,//购车方式-忠诚客户，默认为0
+                "buywayDisplace": false,//购车方式-置换，默认为0
+                "buywayBigCus": false,//购车方式-大客户，默认为0
+                "originPlace": "0",//产地描述
+                "secondCarDescrip": "0",//置换二手车说明
+                "secondCarPrice": 0,//置换价格
+                "secondCarRemark": "0",//二手车备注
+                "buyAccount": null,//预购台数
+                "priorityLevel": null,//订单优先级 1 一级 2 二级
+                "licensePlateProperty": null,//牌照属性
+                "licensePlateGetway": null,//上牌方式
+                "salePrice": null,//车辆成交价格
+                "prepaidAmount": null,//预付金额
+                "invoicePrice": null,//开票金额
+                "payWay": null,//付款方式
+                "payRestMoneyDay": null,//付清余款日
+                "expectedArrivalTime": null,//预计到车时间
+                "getCarDate": null,//提车时间
+                "addedInsurance": null,//增加项-保险，默认为0
+                "addedJz": null,//增加项-精品，默认为0
+                "saleType": null,//销售类型 1 车辆零售 2 车辆批发 3 大客户,默认为1
+                "addedRemark1": null,//补充条款一
+                "addedRemark2": null,//补充条款二
+                "addedRemark3": null,//补充条款三
+                "remark": null,//意见
+                "dividedNetPrice": null,//分期项目-净车身价
+                "dividedLoanAmount": null,//分期项目-贷款额
+                "dividedFirstPay": null,//分期项目-首付车款
+                "dividedCompanyName": null,//分期公司名称
+                "dividedGlassInsurance": null,//分期项目-玻璃险
+                "dividedCusMortgage": null,//分期项目-直客按揭
+                "dividedSecuredMortgage": null,//分期项目-担保按揭
+                "dividedSecuredCompanyName": null,//分期项目-担保公司名称
+                "insuranceCollectedAmount": null,//保险收款金额
+                "extendedWarrantyAmount": null,//延保金额
+                "purchaseTax": null,//购置税
+                "licensePlateAmount": null,//验车上牌
+                "discountAmount": null,//贴息金额
+                "renewalDeposit": null,//续保押金
+                "jzAmount": null,//精品费
+                "totalAmount": 0,//订单合计金额
+                "salesmanName": "0",//销售顾问名称
+                "companyId": "0",//公司ID
+                "status": 2,//状态 0在职，1离职（停用）
+                "createTime": null,//创建时间
+                "creator": null,//创建人姓名
+                "operatorName": null,//操作人姓名
+                "lastSubmitTime": null,//最后提交时间（填单日期）
+                "salesadminCheckFlag": false,//销售经理复核标志，默认为0
+                "salesadminCheckRemark": null,//销售经理复核意见
+                "salesadminName": null,//销售经理名称
+                "salesadminCheckDate": null,//销售经理复核时间
+                "settleFlag": true,//订单结算标志，默认为0
+                "settleRemark": null,//结算意见
+                "settlerName": null,//结算人名称
+                "settleDate": null,//结算时间
+                "assignCarFlag": null,//配车标识，默认为0
+                "assignCarRemark": null,//配车备注
+                "assignCarMan": null,//配车员姓名
+                "assignCarDate": "2018-05-31T06:31:49.000+0000",//配车日期
+                "inventoryNumber": "1234",//库存号
+                "chassisNumber": null,//车架号
+                "carDemioCode": null,//（厂牌）车系代码
+                "carModelCode": null,//车型代码
+                "productCode": null,//产品代码
+                "productName": null,//产品名称
+                "refundFlag": false,//退单标识 0 没有退单 1 退单 ，默认为0
+                "refundStatus": 0,//退单状态 1待审核 2审核通过 3 审核不通过 4 取消配车 5 结算 ，默认为NULL
+                "refundApplyRemark": null,//退单申请备注
+                "refundApplyDate": null,//退单申请日期
+                "refundApplyMan": null,//退单申请人
+                "refundReason": null,//退单原因
+                "refundCheckFlag": null,//退单审核结果 0 不通过 1 通过，默认为0
+                "refundCheckRemark": null,//退单审核意见
+                "refundCheckMan": null,//退单审核人
+                "refundCheckDate": null,//退单审核日期
+                "refundCarFlag": null,//退订车标志，默认为0
+                "refundCarRemark": null,//退订车意见
+                "refundCarName": null,//退订车人名称
+                "refundCarDate": null,//退订车时间
+                "refundSettleFlag": null,//退单结算标识 0 未结算 1 已结算 默认为0
+                "refundSettleRemark": null,//退单结算意见
+                "refundSettleMan": null,//退单结算人
+                "refundSettleDate": null,//退单结算日期
+                "collectedMoney": null,
+                "arrears": null,
+                "venderDiscountAmount": null//厂家贴息金额
+            }
+        }
+    }
+}
+
+3.	退单信息修改
+  地址：http://172.20.66.29:8080/ vehiclesSaleRefund/ updateRefundInfo 
+	  入参：
+{
+	"preOrderOrContract":1,               0订单修改 1合同修改
+	"orderNumber":"DGJZ-YD-2018-5-17-0001", 订单号
+	"updateOrDelete":1,               0：更新退单信息和新增退单信息 1：删除退单信息（必填）
+	"refundReason":"我是来测试退单编辑功能的",         退单原因//退单原因
+	"refundRemark":"退单编辑功能"                     退单备注//退款备注
+}
+出参：
+{
+    "message": "Ok！操作成功",
+    "code": 200,
+    "data": {}
+}
+@wangbinbinend

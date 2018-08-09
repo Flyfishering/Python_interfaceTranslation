@@ -1,0 +1,1106 @@
+
+1.获取用户列表
+地址：http://172.20.66.29:8080/user/getUsers
+	  入参：
+      {
+	  "companyId":"gzjxh",  公司id（必传）
+	  "name":"456",        可为空
+	  "userId":""           可为空
+	  }                
+	  
+出参：
+{
+    "message": "Ok！操作成功",
+    "code": 200,
+    "data": {
+        "users": [
+            {
+                "userId": "2",
+                "name": "456",
+                "sex": "1",
+                "phone": "1",
+                "leaveDate": "2018-04-16T06:28:55.000+0000",
+                "allowLoginFlag": "1",
+                "deletedFlag": "1",
+                "email": null,
+                "position": "1",
+                "companyId": "gzjxh",
+                "status": 0,
+                "companies": null,
+                "permissions": [
+                    {
+                        "parentLabel": "销售管理",
+                        "childrenLabel": [
+                            {
+                                "id": "1",
+                                "childrenLabel": "1",
+                                "resource": "/addUser",
+                                "remark": "1",
+                                "parentLabel": "销售管理"
+                            }
+                        ]
+                    },
+                    {
+                        "parentLabel": "用户管理",
+                        "childrenLabel": [
+                            {
+                                "id": "2",
+                                "childrenLabel": "2",
+                                "resource": "/deletUser",
+                                "remark": "1",
+                                "parentLabel": "用户管理"
+                            }
+                        ]
+                    }
+                ],
+                "companyName": "广州锦星行",
+                "permissions1": null
+            }
+        ]
+    }
+}
+ 
+2.获取所有权限列表
+地址：http://172.20.66.29:8080/user/ getAllPermission
+	  入参：
+           空           
+	  
+出参：
+{
+    "message": "Ok！操作成功",
+    "code": 200,
+    "data": {
+        "permission": [
+            {
+                "parentLabel": "销售管理",
+                "childrenLabel": [
+                    {
+                        "id": "1",
+                        "childrenLabel": "1",
+                        "resource": "/addUser",
+                        "remark": "1",
+                        "parentLabel": "销售管理"
+                    },
+                    {
+                        "id": "4",
+                        "childrenLabel": "4",
+                        "resource": "/eee",
+                        "remark": "1",
+                        "parentLabel": "销售管理"
+                    }
+                ]
+            },
+            {
+                "parentLabel": "用户管理",
+                "childrenLabel": [
+                    {
+                        "id": "2",
+                        "childrenLabel": "2",
+                        "resource": "/deletUser",
+                        "remark": "1",
+                        "parentLabel": "用户管理"
+                    },
+                    {
+                        "id": "3",
+                        "childrenLabel": "3",
+                        "resource": "/ttttt",
+                        "remark": "1",
+                        "parentLabel": "用户管理"
+                    }
+                ]
+            },
+            {
+                "parentLabel": "统计管理",
+                "childrenLabel": [
+                    {
+                        "id": "5",
+                        "childrenLabel": "5",
+                        "resource": "/eee",
+                        "remark": "1",
+                        "parentLabel": "统计管理"
+                    },
+                    {
+                        "id": "6",
+                        "childrenLabel": "6",
+                        "resource": "/eee",
+                        "remark": "1",
+                        "parentLabel": "统计管理"
+                    }
+                ]
+            }
+        ]
+    }
+}
+
+3.新增用户
+地址：http://172.20.66.29:8080/user/addUser
+	  入参：
+           {
+	"newOrPartTimeUser":0,   0新增用户 1新增兼职人员
+	"userId":"888666",
+	"name":"新增人员测试",
+	"sex":"0",
+	"phone":"13554544",
+	"pemission":"1,2,3",      权限传子id集合
+	"companyId":"szjl"
+}          
+	  
+出参：
+  {
+    "message": "Ok！操作成功",
+    "code": 200,
+    "data": {
+}
+
+4.修改用户信息
+地址：http://172.20.66.29:8080/user/updateUser
+	  入参：
+{
+	"userId":"888666",
+	"name":"修改人员测试",
+	"sex":"1",
+	"phone":"111111",
+	"permission":"1,2,3",
+	"companyId":"szjl"
+}
+
+出参：
+  {
+    "message": "Ok！操作成功",
+    "code": 200,
+    "data": {
+}
+
+
+
+5.重置密码
+地址：http://172.20.66.29:8080/user/resetPwd
+	  入参：
+{
+	"userId":"888666"
+}
+出参：
+  {
+    "message": "Ok！操作成功",
+    "code": 200,
+    "data": {
+}
+
+6.删除
+地址：http://172.20.66.29:8080/user/deleteUser
+	  入参：
+{
+	"userId":"888666",
+	"companyId":"szjl"
+}
+出参：
+  {
+    "message": "Ok！操作成功",
+    "code": 200,
+    "data": {
+}
+
+7. 离职
+地址：http://172.20.66.29:8080/user/quit
+	  入参：
+{
+	"userId":"888666"
+}
+出参：
+  {
+    "message": "Ok！操作成功",
+    "code": 200,
+    "data": {
+}
+
+
+
+
+
+8. 获取公司列表
+地址：http://172.20.66.29:8080/user/getCompanies
+	  入参：
+               空
+出参：
+{
+    "message": "Ok！操作成功",
+    "code": 200,
+    "data": {
+        "companies": [
+            {
+                "id": "dgjz",
+                "name": "东莞锦众",
+                "shortName": "东莞锦众",
+                "shortname2letters": "DA",
+                "cityCode": "01^06",
+                "areaName": "深圳",
+                "adress": "深圳市南山区蛇口港湾大道26号",
+                "mail": "800",
+                "phone": "075526808912",
+                "fax": "xx",
+                "brandName": "一汽奥迪",
+                "brandCode": "Audi",
+                "taxRate": 10,
+                "cityPhoneCode": "0755",
+                "preorderCode": "YD",
+                "jzCode": "JZ",
+                "bxCode": "BX",
+                "skCode": "SK",
+                "areaCode": "01",
+                "idDesc": null,
+                "nameDesc": null,
+                "shortNameDesc": null,
+                "shortname2lettersDesc": null,
+                "cityCodeDesc": null,
+                "areaCodeDesc": null,
+                "areaNameDesc": null,
+                "adressDesc": null,
+                "mailDesc": null,
+                "phoneDesc": null,
+                "faxDesc": null,
+                "brandNameDesc": null,
+                "brandCodeDesc": null,
+                "taxRateDesc": null,
+                "cityPhoneCodeDesc": null,
+                "preorderCodeDesc": null,
+                "jzCodeDesc": null,
+                "bxCodeDesc": null,
+                "skCodeDesc": null,
+                "permissions": null
+            },
+				…
+        ]
+    }
+}
+
+
+整车销售退单
+1.	获取整车退单列表或未退单列表
+     地址：http://172.20.66.29:8080/ vehiclesSaleRefund/ getRefundList
+	  入参：
+               {
+	"preOrderOrContract":1,    0查询预订单1查询合同(必填)
+	"currentPage":0,            (必填)
+	"pageSize":10,              (必填)
+	"isRefund":0,              0查询退单列表 1查询未退单列表(必填)
+"cusName":               客户名称
+"refundApplyDateBegin"     退单起始时间
+"refundApplyDateEnd"       退单结束时间
+"salesmanName"            销售顾问
+"refundStatus"              退单状态
+"chassisNumber"            底盘号
+   
+}
+出参：
+PreOrderOrContract传1时
+{
+    "message": "Ok！操作成功",
+    "code": 200,
+    "data": {
+        "refundList": {
+            "pageNum": 0,
+            "pageSize": 10,
+            "size": 2,
+            "startRow": 1,
+            "endRow": 2,
+            "total": 2,
+            "pages": 1,
+            "list": [
+                {
+                    "id": "2",
+                    "contractNumber": "DGJZ-YD-2018-5-17-0001",
+                    "salesmanName": "1",
+                    "createTime": "2018-06-07T06:02:16.000+0000",
+                    "creator": "2",
+                    "getCarDate": "2018-05-31T06:02:00.000+0000",
+                    "companyId": "2",
+                    "salesadminCheckFlag": true,
+                    "salesadminCheckRemark": "我在这里做一个测试",
+                    "salesadminName": "abc",
+                    "salesadminCheckDate": "2018-06-06T06:26:13.790+0000",
+                    "settleFlag": true,
+                    "settleRemark": "1",
+                    "settleTime": "2018-05-31T06:02:42.000+0000",
+                    "settleMan": null,
+                    "carOutFlag": false,
+                    "carOutMan": null,
+                    "carOutTime": null,
+                    "operatorName": null,
+                    "lastSubmitTime": null,
+                    "status": 2,
+                    "cusId": "2",
+                    "cusName": "2",
+                    "identifyType": "2",
+                    "identifyId": "2",
+                    "mobilephone": "2",
+                    "cusType": "2",
+                    "invoiceCusName": "22",
+                    "carDemioName": "2",
+                    "carModelName": "2",
+                    "configure": "2",
+                    "inColor": "2",
+                    "outColor": "2",
+                    "intentionLevel": "2",
+                    "buywayFirst": null,
+                    "buywayLoyal": null,
+                    "buywayDisplace": null,
+                    "buywayBigCus": null,
+                    "originPlace": null,
+                    "secondCarDescrip": null,
+                    "secondCarPrice": null,
+                    "secondCarRemark": null,
+                    "buyAccount": null,
+                    "priorityLevel": null,
+                    "discountPrice": null,
+                    "actualIncome": null,
+                    "payWay": null,
+                    "payRestMoneyDay": null,
+                    "expectedArrivalTime": null,
+                    "preGetCarDate": null,
+                    "saleType": null,
+                    "addedRemark1": null,
+                    "addedRemark2": null,
+                    "addedRemark3": null,
+                    "remark": null,
+                    "inventoryNumber": null,
+                    "chassisNumber": "1234",
+                    "engineNumber": null,
+                    "expectInDate": null,
+                    "matchedCarDemioName": null,
+                    "matchedCarModelName": null,
+                    "matchedConfigure": null,
+                    "matchedInColor": null,
+                    "matchedOutColor": null,
+                    "matchedCarStatus": null,
+                    "matchedCarTime": null,
+                    "matchedComefromCompanyId": null,
+                    "matchedGuidePrice": null,
+                    "dividedCarPrice": null,
+                    "dividedLoanAmount": null,
+                    "dividedFirstPay": null,
+                    "dividedFirstPayRatio": null,
+                    "dividedCompanyName": null,
+                    "dividedGlassInsurance": null,
+                    "dividedCusMortgage": null,
+                    "dividedSecuredMortgage": null,
+                    "dividedPayMonthAmount": null,
+                    "dividedPayYears": null,
+                    "dividedSecuredCompanyName": null,
+                    "insuranceCollectedAmount": null,
+                    "extendedWarrantyAmount": null,
+                    "purchaseTax": null,
+                    "licensePlateAmount": null,
+                    "discountAmount": null,
+                    "venderDiscountAmount": null,
+                    "renewalDeposit": null,
+                    "jzAmount": null,
+                    "totalAmount": 500,
+                    "presentJzAmount": null,
+                    "presentOtherAmount": null,
+                    "presentMaintainAmount": null,
+                    "invoiceCompanyName": null,
+                    "insuranceAdjust": null,
+                    "refundFlag": false,
+                    "refundStatus": null,
+                    "refundApplyRemark": null,
+                    "refundApplyDate": null,
+                    "refundApplayMan": null,
+                    "refundReason": null,
+                    "refundCheckFlag": null,
+                    "refundCheckRemark": null,
+                    "refundCheckMan": null,
+                    "refundCheckDate": null,
+                    "refundCarFlag": null,
+                    "refundCarRemark": null,
+                    "refundCarName": null,
+                    "refundCarDate": null,
+                    "refundSettleFlag": false,
+                    "refundSettleRemark": null,
+                    "refundSettleMan": null,
+                    "refundSettleDate": null,
+                    "licensePlateProperty": null,
+                    "licensePlateGetway": null,
+                    "salePrice": null,
+                    "prepaidAmount": null,
+                    "invoicePrice": null,
+                    "collectedMoney": 233,
+                    "arrears": 267,
+                    "stockInfoDetail": null
+                },
+                …
+            ],
+            "prePage": 0,
+            "nextPage": 1,
+            "isFirstPage": false,
+            "isLastPage": false,
+            "hasPreviousPage": false,
+            "hasNextPage": true,
+            "navigatePages": 8,
+            "navigatepageNums": [
+                1
+            ],
+            "navigateFirstPage": 1,
+            "navigateLastPage": 1,
+            "firstPage": 1,
+            "lastPage": 1
+        }
+    }
+}
+
+PreOrderOrContract传0时
+{
+    "message": "Ok！操作成功",
+    "code": 200,
+    "data": {
+        "refundList": {
+            "pageNum": 0,
+            "pageSize": 10,
+            "size": 2,
+            "startRow": 1,
+            "endRow": 2,
+            "total": 2,
+            "pages": 1,
+            "list": [
+                {
+                    "id": "1526528352749",
+                    "preorderNumber": "DGJZ-YD-2018-5-17-0001",
+                    "cusId": "3",
+                    "cusName": "退单编辑测试",
+                    "identifyType": "4",
+                    "identifyId": "5",
+                    "mobilephone": "6",
+                    "cusType": "7",
+                    "invoiceCusName": "8",
+                    "carDemioName": "9",
+                    "carModelName": "10",
+                    "configure": "11",
+                    "inColor": "12",
+                    "outColor": "13",
+                    "intentionLevel": "14",
+                    "buywayFirst": false,
+                    "buywayLoyal": false,
+                    "buywayDisplace": false,
+                    "buywayBigCus": false,
+                    "originPlace": "0",
+                    "secondCarDescrip": "0",
+                    "secondCarPrice": 0,
+                    "secondCarRemark": "0",
+                    "buyAccount": null,
+                    "priorityLevel": null,
+                    "licensePlateProperty": null,
+                    "licensePlateGetway": null,
+                    "salePrice": null,
+                    "prepaidAmount": null,
+                    "invoicePrice": null,
+                    "payWay": null,
+                    "payRestMoneyDay": null,
+                    "expectedArrivalTime": null,
+                    "getCarDate": null,
+                    "addedInsurance": null,
+                    "addedJz": null,
+                    "saleType": null,
+                    "addedRemark1": null,
+                    "addedRemark2": null,
+                    "addedRemark3": null,
+                    "remark": null,
+                    "dividedNetPrice": null,
+                    "dividedLoanAmount": null,
+                    "dividedFirstPay": null,
+                    "dividedCompanyName": null,
+                    "dividedGlassInsurance": null,
+                    "dividedCusMortgage": null,
+                    "dividedSecuredMortgage": null,
+                    "dividedSecuredCompanyName": null,
+                    "insuranceCollectedAmount": null,
+                    "extendedWarrantyAmount": null,
+                    "purchaseTax": null,
+                    "licensePlateAmount": null,
+                    "discountAmount": null,
+                    "renewalDeposit": null,
+                    "jzAmount": null,
+                    "totalAmount": 0,
+                    "salesmanName": "0",
+                    "companyId": "0",
+                    "status": 2,
+                    "createTime": null,
+                    "creator": null,
+                    "operatorName": null,
+                    "lastSubmitTime": null,
+                    "salesadminCheckFlag": false,
+                    "salesadminCheckRemark": null,
+                    "salesadminName": null,
+                    "salesadminCheckDate": null,
+                    "settleFlag": true,
+                    "settleRemark": null,
+                    "settlerName": null,
+                    "settleDate": null,
+                    "assignCarFlag": null,
+                    "assignCarRemark": null,
+                    "assignCarMan": null,
+                    "assignCarDate": "2018-05-31T06:31:49.000+0000",
+                    "inventoryNumber": "1234",
+                    "chassisNumber": null,
+                    "carDemioCode": null,
+                    "carModelCode": null,
+                    "productCode": null,
+                    "productName": null,
+                    "refundFlag": false,
+                    "refundStatus": null,
+                    "refundApplyRemark": null,
+                    "refundApplyDate": null,
+                    "refundApplyMan": null,
+                    "refundReason": null,
+                    "refundCheckFlag": null,
+                    "refundCheckRemark": null,
+                    "refundCheckMan": null,
+                    "refundCheckDate": null,
+                    "refundCarFlag": null,
+                    "refundCarRemark": null,
+                    "refundCarName": null,
+                    "refundCarDate": null,
+                    "refundSettleFlag": null,
+                    "refundSettleRemark": null,
+                    "refundSettleMan": null,
+                    "refundSettleDate": null,
+                    "collectedMoney": 233,
+                    "arrears": -233,
+                    "venderDiscountAmount": null,
+                    "stockInfoDetail": {
+                        "vinventoryNumber": null,
+                        "cckdm": null,
+                        "companyId": null,
+                        "cgysdm": null,
+                        "ccx": "1",
+                        "ccxdm": "1",
+                        "ccxmc": "1",
+                        "ccpdm": "1",
+                        "ccppz": "1",
+                        "cnsys": "1",
+                        "cysdm": "1",
+                        "ncbdj": null,
+                        "nzdsj": null,
+                        "cdph": "1",
+                        "cfdjh": null,
+                        "chgzh": null,
+                        "dlrrq": null,
+                        "cczydm": null,
+                        "cbz": null,
+                        "cclpzms": null,
+                        "ccd": null,
+                        "dscrq": null,
+                        "dfhrq": null,
+                        "dyjddsj": null,
+                        "cdchjz": null,
+                        "ckcbz": null,
+                        "ctmqk": null,
+                        "ckcqtbz": null,
+                        "bsd": null,
+                        "csdrgh": null,
+                        "dsdsj": null,
+                        "bpcbs": null,
+                        "cpcczy": null,
+                        "dpcsj": null,
+                        "chtzlj": null,
+                        "cdycpdi": null,
+                        "cdecpdi": null,
+                        "czhxgczy": null,
+                        "dzhxgsj": null,
+                        "nclzt": null,
+                        "npccs": null,
+                        "ccpmc": null,
+                        "companyName": null
+                    }
+                },
+               …
+            ],
+            "prePage": 0,
+            "nextPage": 1,
+            "isFirstPage": false,
+            "isLastPage": false,
+            "hasPreviousPage": false,
+            "hasNextPage": true,
+            "navigatePages": 8,
+            "navigatepageNums": [
+                1
+            ],
+            "navigateFirstPage": 1,
+            "navigateLastPage": 1,
+            "firstPage": 1,
+            "lastPage": 1
+        }
+    }
+}
+
+2.	查询退单详细信息 订单信息+备件单+收款信息
+  地址：http://172.20.66.29:8080/ vehiclesSaleRefund/ getRefundDetail
+	  入参：
+      
+	{
+	"preOrderOrContract":1,                     0查询预订单 1查询合同
+	"orderNumber":"DGJZ-YD-2018-5-17-0001"      订单号
+}   
+
+出参：
+preOrderOrContract传1时
+sks：收款信息
+jzbills:加装单信息
+order:订单信息
+{
+    "message": "Ok！操作成功",
+    "code": 200,
+    "data": {
+        "refundDetail": {
+            "sks": [
+                {
+                    "id": 2,
+                    "preorderNumber": "DGJZ-YD-2018-5-17-0001",
+                    "collectedAmount": 200,
+                    "payWay": null,
+                    "type": null,
+                    "bankInfo": null,
+                    "payBillNumber": null,
+                    "payMan": null,
+                    "remark": null,
+                    "payDate": null,
+                    "settleManId": null,
+                    "takeBackFlag": null,
+                    "checkFlag": null,
+                    "status": null
+                },
+                {
+                    "id": 3,
+                    "preorderNumber": "DGJZ-YD-2018-5-17-0001",
+                    "collectedAmount": 11,
+                    "payWay": null,
+                    "type": null,
+                    "bankInfo": null,
+                    "payBillNumber": null,
+                    "payMan": null,
+                    "remark": null,
+                    "payDate": null,
+                    "settleManId": null,
+                    "takeBackFlag": null,
+                    "checkFlag": null,
+                    "status": null
+                },
+                {
+                    "id": 4,
+                    "preorderNumber": "DGJZ-YD-2018-5-17-0001",
+                    "collectedAmount": 11,
+                    "payWay": null,
+                    "type": null,
+                    "bankInfo": null,
+                    "payBillNumber": null,
+                    "payMan": null,
+                    "remark": null,
+                    "payDate": null,
+                    "settleManId": null,
+                    "takeBackFlag": null,
+                    "checkFlag": null,
+                    "status": null
+                },
+                {
+                    "id": 5,
+                    "preorderNumber": "DGJZ-YD-2018-5-17-0001",
+                    "collectedAmount": 11,
+                    "payWay": null,
+                    "type": null,
+                    "bankInfo": null,
+                    "payBillNumber": null,
+                    "payMan": null,
+                    "remark": null,
+                    "payDate": null,
+                    "settleManId": null,
+                    "takeBackFlag": null,
+                    "checkFlag": null,
+                    "status": null
+                }
+            ],
+            "jzBills": {
+                "jzBillItems": [
+                    {
+                        "billNumber": "DGJZ-YD-2018-5-17-0001",
+                        "jzNumber": "22",
+                        "jzName": "Q7电动脚踏板",
+                        "salesNumber": 1,
+                        "unit": "件",
+                        "costPrice": 1.33,
+                        "taxBuyPrice": null,
+                        "outInventoryPrice": 1.33,
+                        "accountingPrice": 1.33,
+                        "amountReceivable": 1.63,
+                        "amountCollected": 1.56
+                    },
+                    {
+                        "billNumber": "DGJZ-YD-2018-5-17-0001",
+                        "jzNumber": "72",
+                        "jzName": "Q5 原厂后视镜电动折叠",
+                        "salesNumber": 1,
+                        "unit": "套",
+                        "costPrice": 1.33,
+                        "taxBuyPrice": null,
+                        "outInventoryPrice": 1.33,
+                        "accountingPrice": 1.33,
+                        "amountReceivable": 1.63,
+                        "amountCollected": 1.56
+                    }
+                ],
+                "totalAmountCollected": 3.12,
+                "totalAmountReceivable": 3.26,
+                "totalCount": 2
+            },
+            "order": {
+                "id": "2",
+                "contractNumber": "DGJZ-YD-2018-5-17-0001",
+                "salesmanName": "1",
+                "createTime": "2018-06-07T06:02:16.000+0000",
+                "creator": "2",
+                "getCarDate": "2018-05-31T06:02:00.000+0000",
+                "companyId": "2",
+                "salesadminCheckFlag": true,
+                "salesadminCheckRemark": "我在这里做一个测试",
+                "salesadminName": "abc",
+                "salesadminCheckDate": "2018-06-06T06:26:13.790+0000",
+                "settleFlag": true,
+                "settleRemark": "1",
+                "settleTime": "2018-05-31T06:02:42.000+0000",
+                "settleMan": null,
+                "carOutFlag": false,
+                "carOutMan": null,
+                "carOutTime": null,
+                "operatorName": null,
+                "lastSubmitTime": null,
+                "status": 2,
+                "cusId": "2",
+                "cusName": "2",
+                "identifyType": "2",
+                "identifyId": "2",
+                "mobilephone": "2",
+                "cusType": "2",
+                "invoiceCusName": "22",
+                "carDemioName": "2",
+                "carModelName": "2",
+                "configure": "2",
+                "inColor": "2",
+                "outColor": "2",
+                "intentionLevel": "2",
+                "buywayFirst": null,
+                "buywayLoyal": null,
+                "buywayDisplace": null,
+                "buywayBigCus": null,
+                "originPlace": null,
+                "secondCarDescrip": null,
+                "secondCarPrice": null,
+                "secondCarRemark": null,
+                "buyAccount": null,
+                "priorityLevel": null,
+                "discountPrice": null,
+                "actualIncome": null,
+                "payWay": null,
+                "payRestMoneyDay": null,
+                "expectedArrivalTime": null,
+                "preGetCarDate": null,
+                "saleType": null,
+                "addedRemark1": null,
+                "addedRemark2": null,
+                "addedRemark3": null,
+                "remark": null,
+                "inventoryNumber": null,
+                "chassisNumber": "1234",
+                "engineNumber": null,
+                "expectInDate": null,
+                "matchedCarDemioName": null,
+                "matchedCarModelName": null,
+                "matchedConfigure": null,
+                "matchedInColor": null,
+                "matchedOutColor": null,
+                "matchedCarStatus": null,
+                "matchedCarTime": null,
+                "matchedComefromCompanyId": null,
+                "matchedGuidePrice": null,
+                "dividedCarPrice": null,
+                "dividedLoanAmount": null,
+                "dividedFirstPay": null,
+                "dividedFirstPayRatio": null,
+                "dividedCompanyName": null,
+                "dividedGlassInsurance": null,
+                "dividedCusMortgage": null,
+                "dividedSecuredMortgage": null,
+                "dividedPayMonthAmount": null,
+                "dividedPayYears": null,
+                "dividedSecuredCompanyName": null,
+                "insuranceCollectedAmount": null,
+                "extendedWarrantyAmount": null,
+                "purchaseTax": null,
+                "licensePlateAmount": null,
+                "discountAmount": null,
+                "venderDiscountAmount": null,
+                "renewalDeposit": null,
+                "jzAmount": null,
+                "totalAmount": 500,
+                "presentJzAmount": null,
+                "presentOtherAmount": null,
+                "presentMaintainAmount": null,
+                "invoiceCompanyName": null,
+                "insuranceAdjust": null,
+                "refundFlag": false,
+                "refundStatus": null,
+                "refundApplyRemark": null,
+                "refundApplyDate": null,
+                "refundApplayMan": null,
+                "refundReason": null,
+                "refundCheckFlag": null,
+                "refundCheckRemark": null,
+                "refundCheckMan": null,
+                "refundCheckDate": null,
+                "refundCarFlag": null,
+                "refundCarRemark": null,
+                "refundCarName": null,
+                "refundCarDate": null,
+                "refundSettleFlag": false,
+                "refundSettleRemark": null,
+                "refundSettleMan": null,
+                "refundSettleDate": null,
+                "licensePlateProperty": null,
+                "licensePlateGetway": null,
+                "salePrice": null,
+                "prepaidAmount": null,
+                "invoicePrice": null,
+                "collectedMoney": null,
+                "arrears": null
+            }
+        }
+    }
+}
+
+preOrderOrContract传0时
+{
+    "message": "Ok！操作成功",
+    "code": 200,
+    "data": {
+        "refundDetail": {
+            "sks": [
+                {
+                    "id": 2,
+                    "preorderNumber": "DGJZ-YD-2018-5-17-0001",
+                    "collectedAmount": 200,
+                    "payWay": null,
+                    "type": null,
+                    "bankInfo": null,
+                    "payBillNumber": null,
+                    "payMan": null,
+                    "remark": null,
+                    "payDate": null,
+                    "settleManId": null,
+                    "takeBackFlag": null,
+                    "checkFlag": null,
+                    "status": null
+                },
+                {
+                    "id": 3,
+                    "preorderNumber": "DGJZ-YD-2018-5-17-0001",
+                    "collectedAmount": 11,
+                    "payWay": null,
+                    "type": null,
+                    "bankInfo": null,
+                    "payBillNumber": null,
+                    "payMan": null,
+                    "remark": null,
+                    "payDate": null,
+                    "settleManId": null,
+                    "takeBackFlag": null,
+                    "checkFlag": null,
+                    "status": null
+                },
+                {
+                    "id": 4,
+                    "preorderNumber": "DGJZ-YD-2018-5-17-0001",
+                    "collectedAmount": 11,
+                    "payWay": null,
+                    "type": null,
+                    "bankInfo": null,
+                    "payBillNumber": null,
+                    "payMan": null,
+                    "remark": null,
+                    "payDate": null,
+                    "settleManId": null,
+                    "takeBackFlag": null,
+                    "checkFlag": null,
+                    "status": null
+                },
+                {
+                    "id": 5,
+                    "preorderNumber": "DGJZ-YD-2018-5-17-0001",
+                    "collectedAmount": 11,
+                    "payWay": null,
+                    "type": null,
+                    "bankInfo": null,
+                    "payBillNumber": null,
+                    "payMan": null,
+                    "remark": null,
+                    "payDate": null,
+                    "settleManId": null,
+                    "takeBackFlag": null,
+                    "checkFlag": null,
+                    "status": null
+                }
+            ],
+            "jzBills": {
+                "jzBillItems": [
+                    {
+                        "billNumber": "DGJZ-YD-2018-5-17-0001",
+                        "jzNumber": "22",
+                        "jzName": "Q7电动脚踏板",
+                        "salesNumber": 1,
+                        "unit": "件",
+                        "costPrice": 1.33,
+                        "taxBuyPrice": null,
+                        "outInventoryPrice": 1.33,
+                        "accountingPrice": 1.33,
+                        "amountReceivable": 1.63,
+                        "amountCollected": 1.56
+                    },
+                    {
+                        "billNumber": "DGJZ-YD-2018-5-17-0001",
+                        "jzNumber": "72",
+                        "jzName": "Q5 原厂后视镜电动折叠",
+                        "salesNumber": 1,
+                        "unit": "套",
+                        "costPrice": 1.33,
+                        "taxBuyPrice": null,
+                        "outInventoryPrice": 1.33,
+                        "accountingPrice": 1.33,
+                        "amountReceivable": 1.63,
+                        "amountCollected": 1.56
+                    }
+                ],
+                "totalAmountCollected": 3.12,        合计实收金额
+                "totalAmountReceivable": 3.26,		合计应收金额
+                "totalCount": 2                    总数量
+            },
+            "order": {
+                "id": "1526528352749",
+                "preorderNumber": "DGJZ-YD-2018-5-17-0001",
+                "cusId": "3",
+                "cusName": "退单编辑测试",
+                "identifyType": "4",
+                "identifyId": "5",
+                "mobilephone": "6",
+                "cusType": "7",
+                "invoiceCusName": "8",
+                "carDemioName": "9",
+                "carModelName": "10",
+                "configure": "11",
+                "inColor": "12",
+                "outColor": "13",
+                "intentionLevel": "14",
+                "buywayFirst": false,
+                "buywayLoyal": false,
+                "buywayDisplace": false,
+                "buywayBigCus": false,
+                "originPlace": "0",
+                "secondCarDescrip": "0",
+                "secondCarPrice": 0,
+                "secondCarRemark": "0",
+                "buyAccount": null,
+                "priorityLevel": null,
+                "licensePlateProperty": null,
+                "licensePlateGetway": null,
+                "salePrice": null,
+                "prepaidAmount": null,
+                "invoicePrice": null,
+                "payWay": null,
+                "payRestMoneyDay": null,
+                "expectedArrivalTime": null,
+                "getCarDate": null,
+                "addedInsurance": null,
+                "addedJz": null,
+                "saleType": null,
+                "addedRemark1": null,
+                "addedRemark2": null,
+                "addedRemark3": null,
+                "remark": null,
+                "dividedNetPrice": null,
+                "dividedLoanAmount": null,
+                "dividedFirstPay": null,
+                "dividedCompanyName": null,
+                "dividedGlassInsurance": null,
+                "dividedCusMortgage": null,
+                "dividedSecuredMortgage": null,
+                "dividedSecuredCompanyName": null,
+                "insuranceCollectedAmount": null,
+                "extendedWarrantyAmount": null,
+                "purchaseTax": null,
+                "licensePlateAmount": null,
+                "discountAmount": null,
+                "renewalDeposit": null,
+                "jzAmount": null,
+                "totalAmount": 0,
+                "salesmanName": "0",
+                "companyId": "0",
+                "status": 2,
+                "createTime": null,
+                "creator": null,
+                "operatorName": null,
+                "lastSubmitTime": null,
+                "salesadminCheckFlag": false,
+                "salesadminCheckRemark": null,
+                "salesadminName": null,
+                "salesadminCheckDate": null,
+                "settleFlag": true,
+                "settleRemark": null,
+                "settlerName": null,
+                "settleDate": null,
+                "assignCarFlag": null,
+                "assignCarRemark": null,
+                "assignCarMan": null,
+                "assignCarDate": "2018-05-31T06:31:49.000+0000",
+                "inventoryNumber": "1234",
+                "chassisNumber": null,
+                "carDemioCode": null,
+                "carModelCode": null,
+                "productCode": null,
+                "productName": null,
+                "refundFlag": false,
+                "refundStatus": 0,
+                "refundApplyRemark": null,
+                "refundApplyDate": null,
+                "refundApplyMan": null,
+                "refundReason": null,
+                "refundCheckFlag": null,
+                "refundCheckRemark": null,
+                "refundCheckMan": null,
+                "refundCheckDate": null,
+                "refundCarFlag": null,
+                "refundCarRemark": null,
+                "refundCarName": null,
+                "refundCarDate": null,
+                "refundSettleFlag": null,
+                "refundSettleRemark": null,
+                "refundSettleMan": null,
+                "refundSettleDate": null,
+                "collectedMoney": null,
+                "arrears": null,
+                "venderDiscountAmount": null
+            }
+        }
+    }
+}
+
+3.	退单信息修改
+  地址：http://172.20.66.29:8080/ vehiclesSaleRefund/ updateRefundInfo 
+	  入参：
+{
+	"preOrderOrContract":1,               0订单修改 1合同修改
+	"orderNumber":"DGJZ-YD-2018-5-17-0001", 订单号
+	"updateOrDelete":1,               0：更新退单信息和新增退单信息 1：删除退单信息（必填）
+	"refundReason":"我是来测试退单编辑功能的",         退单原因
+	"refundRemark":"退单编辑功能"                     退单备注
+}
+出参：
+{
+    "message": "Ok！操作成功",
+    "code": 200,
+    "data": {}
+}
+@wangbinbinend
